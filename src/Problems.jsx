@@ -45,8 +45,8 @@ function Problems({viewRef}){
         shapes: [
           {
             id: crypto.randomUUID(),
-            type: 'right-triangle',
-            sides: [3, 4, 5, 30, 30, 120],
+            type: 'rhombus',
+            sides: [3, 40, 140],
             units: 'dm'
           }
         ]
@@ -175,18 +175,21 @@ function Problems({viewRef}){
       e.preventDefault()
       const formData = new FormData(e.target)
       const chosenShape = formData.get("select-shape")
-      
-      console.log(chosenShape)
-      console.log(idprob)
   
       let newSides = []
   
-      if(chosenShape === 'triangle' || chosenShape === 'right-triangle'){
+      if(chosenShape === 'triangle') {
         newSides = [null,null,null, null, null, null]
-      }else if(chosenShape === 'rectangle'){
+      }else if(chosenShape === 'right-triangle'){
+        newSides = [null,null,null, null, null]
+      }
+      
+      else if(chosenShape === 'rectangle'){
         newSides = [null,null]
       }else if(chosenShape === 'square'){
         newSides = [null]
+      }else if(chosenShape === 'rhombus'){
+        newSides = [null, null, null]
       }
   
       const nextProblems = (problems.map(problem => {

@@ -5,6 +5,7 @@ const shape_icons = {
   'right-triangle': "Right Triangle",
   'rectangle': "Rectangle",
   'square': "Square",
+  'rhombus': "Rhombus"
 }
 
 function ProblemForm({
@@ -99,6 +100,7 @@ function ProblemForm({
                         <option value="right-triangle">Right Triangle</option>
                         <option value="rectangle">Rectangle</option>
                         <option value="square">Square</option>
+                        <option value="rhombus">Rhombus</option>
                         
                     </select>
                         <button type="submit">Create</button>
