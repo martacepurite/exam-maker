@@ -67,8 +67,8 @@ function Problems({viewRef}){
         shapes: [
           {
             id: crypto.randomUUID(),
-            type: 'square',
-            sides: [7],
+            type: 'trapezoid',
+            sides: [7,12,13,14,130,30,50,60],
             units: 'mm'
           }
         ]
@@ -190,6 +190,8 @@ function Problems({viewRef}){
         newSides = [null]
       }else if(chosenShape === 'rhombus'){
         newSides = [null, null, null]
+      }else if(chosenShape === 'trapezoid'){
+        newSides = [null, null, null,null,null, null, null,null]
       }
   
       const nextProblems = (problems.map(problem => {
