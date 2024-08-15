@@ -258,9 +258,9 @@ function Problems({viewRef}){
       setProblems(nextProblems) 
     }
     
-    const [title, setTitle] = useState('Kontroldarbs')
-    const [name, setName] = useState('Vārds')
-    const [variant, setVariant] = useState('1. Variants')
+    const [title, setTitle] = useState('Test')
+    const [name, setName] = useState('Name:')
+    const [variant, setVariant] = useState('Geometry')
   
     return (
       <>
