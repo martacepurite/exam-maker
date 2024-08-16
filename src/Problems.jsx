@@ -8,15 +8,15 @@ function Problems({viewRef}){
     const [problems, setProblems] = useState([
       {
         id: crypto.randomUUID(),
-        question: 'what one',
+        question: 'Question one',
         answers: [
           {
             id: crypto.randomUUID(),
-            text: 'answer oneone'
+            text: 'answer one'
           },
           {
             id: crypto.randomUUID(),
-            text: 'answer onetwo'
+            text: 'answer two'
           }
         ],
         shapes: [
@@ -31,16 +31,9 @@ function Problems({viewRef}){
       },
       {
         id: crypto.randomUUID(),
-        question: 'what two',
+        question: 'Question two',
         answers: [
-          {
-            id: crypto.randomUUID(),
-            text: 'answer twoone'
-          },
-          {
-            id: crypto.randomUUID(),
-            text: 'answer twotwo'
-          }
+          
         ],
         shapes: [
           {
@@ -48,28 +41,6 @@ function Problems({viewRef}){
             type: 'rhombus',
             sides: [3, 40, 140],
             units: 'dm'
-          }
-        ]
-      },
-      {
-        id: crypto.randomUUID(),
-        question: 'what three',
-        answers: [
-          {
-            id: crypto.randomUUID(),
-            text: 'answer twoone'
-          },
-          {
-            id: crypto.randomUUID(),
-            text: 'answer twotwo'
-          }
-        ],
-        shapes: [
-          {
-            id: crypto.randomUUID(),
-            type: 'trapezoid',
-            sides: [7,12,13,14,130,30,50,60],
-            units: 'mm'
           }
         ]
       },
@@ -289,9 +260,9 @@ function Problems({viewRef}){
       setProblems(nextProblems) 
     }
     
-    const [title, setTitle] = useState('Kontroldarbs')
-    const [name, setName] = useState('Vārds')
-    const [variant, setVariant] = useState('1. Variants')
+    const [title, setTitle] = useState('Test')
+    const [name, setName] = useState('Name:')
+    const [variant, setVariant] = useState('Geometry')
   
     return (
       <>
