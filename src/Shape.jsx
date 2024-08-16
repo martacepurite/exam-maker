@@ -362,6 +362,8 @@ function Trapezoid({sides, units}){
   const has_side_seven = sides[6] !== ""
   const has_side_eight = sides[7] !== ""
 
+  let num_of_angles = has_side_five + has_side_six + has_side_seven + has_side_eight;
+
   return (
     <>
       <svg width="200" height="130">
@@ -396,6 +398,11 @@ function Trapezoid({sides, units}){
           <path d="M30,30 C30,30 47,33, 45,17"
           fill="none" stroke="black" stroke-width="1"/>
         <text x="40" y="43" font-size="15">{sides[5]}°</text>
+
+          {num_of_angles > 1 && 
+            <path d="M30,33 C30,33 50,35, 48,16"
+            fill="none" stroke="black" stroke-width="1"/>
+          }
         </>
       }
 
@@ -404,6 +411,15 @@ function Trapezoid({sides, units}){
           <path d="M127,28 C127,28 110,35, 110,17"
           fill="none" stroke="black" stroke-width="1"/>
         <text x="95" y="43" font-size="15">{sides[6]}°</text>
+
+        {num_of_angles > 1 &&
+          <path d="M127,31 C127,31 107,37, 107,17"
+          fill="none" stroke="black" stroke-width="1"/>
+        }
+        {num_of_angles > 2 &&
+          <path d="M127,25 C127,25 113,32, 113,17"
+          fill="none" stroke="black" stroke-width="1"/>
+        }
         </>
       }
 
