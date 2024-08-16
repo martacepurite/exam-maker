@@ -397,9 +397,9 @@ function Trapezoid({sides, units}){
         <>
           <path d="M30,30 C30,30 47,33, 45,17"
           fill="none" stroke="black" stroke-width="1"/>
-        <text x="40" y="43" font-size="15">{sides[5]}°</text>
+        <text x="40" y="46" font-size="15">{sides[5]}°</text>
 
-          {num_of_angles > 1 && 
+          {has_side_five && 
             <path d="M30,33 C30,33 50,35, 48,16"
             fill="none" stroke="black" stroke-width="1"/>
           }
@@ -410,13 +410,13 @@ function Trapezoid({sides, units}){
         <>
           <path d="M127,28 C127,28 110,35, 110,17"
           fill="none" stroke="black" stroke-width="1"/>
-        <text x="95" y="43" font-size="15">{sides[6]}°</text>
+        <text x="95" y="47" font-size="15">{sides[6]}°</text>
 
-        {num_of_angles > 1 &&
+        {has_side_five &&
           <path d="M127,31 C127,31 107,37, 107,17"
           fill="none" stroke="black" stroke-width="1"/>
         }
-        {num_of_angles > 2 &&
+        {has_side_six &&
           <path d="M127,25 C127,25 113,32, 113,17"
           fill="none" stroke="black" stroke-width="1"/>
         }
@@ -428,6 +428,21 @@ function Trapezoid({sides, units}){
           <path d="M150,95 C150,95 150,80, 162,83"
           fill="none" stroke="black" stroke-width="1"/>
       <text x="120" y="85" font-size="15">{sides[7]}°</text>
+
+          {num_of_angles > 1 &&
+            <path d="M153,95 C153,95 153,80, 166,87"
+            fill="none" stroke="black" stroke-width="1"/>
+          }
+          {num_of_angles > 2 &&
+            <path d="M147,95 C147,95 146,78, 162,80"
+            fill="none" stroke="black" stroke-width="1"/>
+          }
+          {num_of_angles > 3 &&
+            <path d="M156,95 C156,95 156,85, 165,88"
+            fill="none" stroke="black" stroke-width="1"/>
+          }
+
+
         </>
       }
 

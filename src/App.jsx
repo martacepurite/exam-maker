@@ -55,7 +55,7 @@ function App(){
         let height = canvas.height/print_scale;
         let width = canvas.width/print_scale;
 
-        if(coord + height > 600){
+        if(coord + height > 500){
           pdf.addPage()
           coord = 20;
         }

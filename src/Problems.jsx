@@ -150,19 +150,19 @@ function Problems({viewRef}){
       let newSides = []
   
       if(chosenShape === 'triangle') {
-        newSides = [null,null,null, null, null, null]
+        newSides = ["","","", "", "", ""]
       }else if(chosenShape === 'right-triangle'){
-        newSides = [null,null,null, null, null]
+        newSides = ["","","", "", ""]
       }
       
       else if(chosenShape === 'rectangle'){
-        newSides = [null,null]
+        newSides = ["",""]
       }else if(chosenShape === 'square'){
-        newSides = [null]
+        newSides = [""]
       }else if(chosenShape === 'rhombus'){
-        newSides = [null, null, null]
+        newSides = ["","",""]
       }else if(chosenShape === 'trapezoid'){
-        newSides = [null, null, null,null,null, null, null,null]
+        newSides = ["","","", "", "", "", "", ""]
       }
   
       const nextProblems = (problems.map(problem => {

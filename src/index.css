@@ -95,7 +95,7 @@ button {
 }
 
 .shape-holder {
-    display: block;
+    display: inline;
     margin: 5px;
     padding: auto;
 }
