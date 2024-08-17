@@ -204,6 +204,13 @@ select {
     background-color:lightgreen;
 }
 
+.shape-settings-container {
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+    background-color: rgb(163, 178, 206);
+}
+
 
 
 

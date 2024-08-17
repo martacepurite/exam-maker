@@ -19,7 +19,8 @@ function ProblemForm({
     handleAddShape,
     handleDeleteShape,
     handleSetSides,
-    handleSetUnits
+    handleSetUnits,
+    handleSetAngles
   }){
   
       const [isVisible, setIsVisible] = useState(true)
@@ -62,17 +63,31 @@ function ProblemForm({
                 ))}
   
                 {problem.shapes.map(shape => (
-                  <div key={shape.id}>
-                    <form onSubmit={(e)=>{handleSetSides(problem.id, shape.id, e)}} className="shape-sides-form"> 
+                  <div key={shape.id} className="shape-settings-container">
                     <label>{shape_icons[shape.type]}
+                    <form onSubmit={(e)=>{handleSetSides(problem.id, shape.id, e)}} className="shape-sides-form"> 
+                    <label> Sides:
                       {shape.sides.map(side => (
                         <input type="text" name="shape-side"/>
                       ))}
-                      </label>
+                    </label>
                         <button type="submit">Set</button>
                        <button onClick={(e) => {handleDeleteShape(problem.id,shape.id,e)}}>X</button>
                     
                     </form>
+                  
+                  {(shape.type !== 'rectangle' && shape.type !== 'square') &&
+                    <form onSubmit={(e)=>{handleSetAngles(problem.id, shape.id, e)}}className="shape-sides-form">
+                    <label> Angles:
+                    {shape.angles.map(side => (
+                        <input type="text" name="shape-side"/>
+                      ))}
+                      </label>
+                      <button type="submit">Set</button>
+                    </form>
+
+                  }
+                    
                     
                     <form onSubmit={(e)=>{handleSetUnits(problem.id, shape.id, e)}} className="shape-units-form">
                         <label>Units:
@@ -86,7 +101,7 @@ function ProblemForm({
                         </label>
                         <button type="submit">Set</button>
                     </form>
-                    
+                    </label>
                     
                     </div>
                 ))}

@@ -23,7 +23,8 @@ function Problems({viewRef}){
           {
             id: crypto.randomUUID(),
             type: 'triangle',
-            sides: [3, 4, 5, 30, 30, 120],
+            sides: [3, 4, 5],
+            angles: [30, 30, 120],
             units: 'cm'
             
           }
@@ -39,7 +40,8 @@ function Problems({viewRef}){
           {
             id: crypto.randomUUID(),
             type: 'rhombus',
-            sides: [3, 40, 140],
+            sides: [3],
+            angles: [40, 140],
             units: 'dm'
           }
         ]
@@ -148,20 +150,25 @@ function Problems({viewRef}){
       const chosenShape = formData.get("select-shape")
   
       let newSides = []
+      let newAngles = []
   
       if(chosenShape === 'triangle') {
-        newSides = ["","","", "", "", ""]
+        newSides = ["","",""]
+        newAngles = ["", "", ""]
       }else if(chosenShape === 'right-triangle'){
-        newSides = ["","","", "", ""]
+        newSides = ["","",""]
+        newAngles = ["", ""]
       }
       else if(chosenShape === 'rectangle'){
         newSides = ["",""]
       }else if(chosenShape === 'square'){
         newSides = [""]
       }else if(chosenShape === 'rhombus'){
-        newSides = ["","",""]
+        newSides = [""]
+        newAngles = ["", ""]
       }else if(chosenShape === 'trapezoid'){
-        newSides = ["","","", "", "", "", "", ""]
+        newSides = ["","","", ""]
+        newAngles = ["", "", "", ""]
       }
   
       const nextProblems = (problems.map(problem => {
@@ -172,7 +179,9 @@ function Problems({viewRef}){
               ...problem.shapes,
                {id:crypto.randomUUID(),
                  type:chosenShape,
-                  sides:newSides}]
+                  sides:newSides,
+                  angles:newAngles
+                }]
   
           };
         }else{
@@ -212,7 +221,7 @@ function Problems({viewRef}){
               ...problem.shapes.map(sha => {
                 
                 if(sha.id === idshape){
-                  return {id:idshape, type:sha.type, sides:data, units:sha.units}
+                  return {id:idshape, type:sha.type, sides:data, angles:sha.angles, units:sha.units}
                 }else{
                   return sha;
                 }
@@ -242,7 +251,37 @@ function Problems({viewRef}){
               ...problem.shapes.map(sha => {
                 
                 if(sha.id === idshape){
-                  return {id:idshape, type:sha.type, sides:sha.sides, units:data[0]}
+                  return {id:idshape, type:sha.type, sides:sha.sides,angles:sha.angles, units:data[0]}
+                }else{
+                  return sha;
+                }
+                
+              })]
+  
+          };
+        }else{
+          return problem;
+        }
+        
+      }))
+  
+      setProblems(nextProblems) 
+    }
+
+    function handleSetAngles(idprob, idshape,e){
+      e.preventDefault()
+      const formData = new FormData(e.target)
+      const data = [...formData.values()]
+  
+      const nextProblems = (problems.map(problem => {
+        if(problem.id === idprob){
+  
+          return {...problem,
+            shapes:[
+              ...problem.shapes.map(sha => {
+                
+                if(sha.id === idshape){
+                  return {id:idshape, type:sha.type, sides:sha.sides,angles:data, units:sha.units}
                 }else{
                   return sha;
                 }
@@ -327,6 +366,7 @@ function Problems({viewRef}){
                  handleDeleteShape={handleDeleteShape}
                  handleSetSides={handleSetSides}
                  handleSetUnits={handleSetUnits}
+                 handleSetAngles={handleSetAngles}
                  ></ProblemForm>
             )
           )}

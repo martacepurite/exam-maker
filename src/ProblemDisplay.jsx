@@ -16,6 +16,7 @@ function ProblemDisplay({question, answers, shapes}){
             {shapes.map(shape =>(
               
                 <Shape key={shape.id} type={shape.type} sides={shape.sides}
+                angles={shape.angles}
                   units={shape.units}
                 ></Shape>
               

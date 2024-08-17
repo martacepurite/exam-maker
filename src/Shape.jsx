@@ -1,6 +1,6 @@
 import { useRef, useEffect, useLayoutEffect, useState } from "react"
 
-function Triangle({sides, units}){
+function Triangle({sides, units, angles}){
 
   let pts = "40,5 5,90 150,90"
 
@@ -17,9 +17,9 @@ function Triangle({sides, units}){
   const has_side_one = sides[0] !== ""
   const has_side_two = sides[1] !== ""
   const has_side_three = sides[2] !== ""
-  const has_side_four = sides[3] !== ""
-  const has_side_five = sides[4] !== ""
-  const has_side_six = sides[5] !== ""
+  const has_side_four = angles[0] !== ""
+  const has_side_five = angles[1] !== ""
+  const has_side_six = angles[2] !== ""
 
   let num_of_angles = has_side_four + has_side_five + has_side_six;
 
@@ -43,7 +43,7 @@ function Triangle({sides, units}){
 
     {has_side_four && 
       <>
-        <text x="25" y="77" font-size="15">{sides[3]}°</text>
+        <text x="25" y="77" font-size="15">{angles[0]}°</text>
         <path d="M10,75 C10,75 25,70, 25,90"
           fill="none" stroke="black" stroke-width="1"/>
         {has_side_six &&
@@ -57,7 +57,7 @@ function Triangle({sides, units}){
 
     {has_side_five && 
       <>
-        <text x="40" y="42" font-size="15">{sides[4]}°</text>
+        <text x="40" y="42" font-size="15">{angles[1]}°</text>
         <path d="M33,23 C33,23 45,30, 53,17"
       fill="none" stroke="black" stroke-width="1"/>
 
@@ -80,7 +80,7 @@ function Triangle({sides, units}){
 
     {has_side_six && 
       <>
-        <text x="93" y="84" font-size="15">{sides[5]}°</text>
+        <text x="93" y="84" font-size="15">{angles[2]}°</text>
       <path d="M125,90 C125,90 120,80, 130,75"
       fill="none" stroke="black" stroke-width="1"/>
       </>
@@ -97,7 +97,7 @@ function Triangle({sides, units}){
   )
 }
 
-function RightTriangle({sides, units}){
+function RightTriangle({sides, units, angles}){
 
   const has_units = units!==""
 
@@ -112,8 +112,8 @@ function RightTriangle({sides, units}){
   const has_side_one = sides[0] !== ""
   const has_side_two = sides[1] !== ""
   const has_side_three = sides[2] !== ""
-  const has_side_four = sides[3] !== ""
-  const has_side_five = sides[4] !== ""
+  const has_side_four = angles[0] !== ""
+  const has_side_five = angles[1] !== ""
 
   return (
     <>
@@ -139,7 +139,7 @@ function RightTriangle({sides, units}){
 
       {has_side_four && 
         <>
-          <text x="25" y="37" font-size="15">{sides[3]}°</text>
+          <text x="25" y="37" font-size="15">{angles[0]}°</text>
         <path d="M20,20 C20,20 30,25, 33,13"
         fill="none" stroke="black" stroke-width="1"/>
         </>
@@ -147,7 +147,7 @@ function RightTriangle({sides, units}){
       }
       {has_side_five &&
         <>
-          <text x="80" y="73" font-size="15">{sides[4]}°</text>
+          <text x="80" y="73" font-size="15">{angles[1]}°</text>
           <path d="M113,80 C113,80 110,72, 118,67"
         fill="none" stroke="black" stroke-width="1"/>
           {has_side_four && 
@@ -259,7 +259,7 @@ function Rectangle({sides, units}){
   )
 }
 
-function Rhombus({sides, units}){
+function Rhombus({sides, units, angles}){
   const has_units = units!==""
 
   let x_vals 
@@ -271,8 +271,8 @@ function Rhombus({sides, units}){
   }
 
   const has_side_one = sides[0] !== ""
-  const has_side_two = sides[1] !== ""
-  const has_side_three = sides[2] !== ""
+  const has_side_two = angles[0] !== ""
+  const has_side_three = angles[1] !== ""
 
   return (
     <>
@@ -303,11 +303,11 @@ function Rhombus({sides, units}){
           <>
                 <path d="M17,45 C17,45 27,55, 17,64"
               fill="none" stroke="black" stroke-width="1"/>
-              <text x="25" y="60" font-size="15">{sides[1]}°</text>
+              <text x="25" y="60" font-size="15">{angles[0]}°</text>
 
               <path d="M125,45 C125,45 115,55, 125,64"
               fill="none" stroke="black" stroke-width="1"/>
-              <text x="95" y="60" font-size="15">{sides[1]}°</text>
+              <text x="95" y="60" font-size="15">{angles[0]}°</text>
 
               {has_side_three && 
                 <>
@@ -327,11 +327,11 @@ function Rhombus({sides, units}){
           <>
               <path d="M60,13 C60,13 70,25, 80,13"
             fill="none" stroke="black" stroke-width="1"/>
-            <text x="57" y="35" font-size="15">{sides[2]}°</text>
+            <text x="57" y="35" font-size="15">{angles[1]}°</text>
 
             <path d="M60,95 C60,95 70,80, 80,95"
             fill="none" stroke="black" stroke-width="1"/>
-            <text x="57" y="83" font-size="15">{sides[2]}°</text>
+            <text x="57" y="83" font-size="15">{angles[1]}°</text>
           
           </>
          
@@ -341,7 +341,7 @@ function Rhombus({sides, units}){
   )
 }
 
-function Trapezoid({sides, units}){
+function Trapezoid({sides, units, angles}){
 
   const has_units = units!==""
 
@@ -357,10 +357,10 @@ function Trapezoid({sides, units}){
   const has_side_two = sides[1] !== ""
   const has_side_three = sides[2] !== ""
   const has_side_four = sides[3] !== ""
-  const has_side_five = sides[4] !== ""
-  const has_side_six = sides[5] !== ""
-  const has_side_seven = sides[6] !== ""
-  const has_side_eight = sides[7] !== ""
+  const has_side_five = angles[0] !== ""
+  const has_side_six = angles[1] !== ""
+  const has_side_seven = angles[2] !== ""
+  const has_side_eight = angles[3] !== ""
 
   let num_of_angles = has_side_five + has_side_six + has_side_seven + has_side_eight;
 
@@ -390,14 +390,14 @@ function Trapezoid({sides, units}){
         <>
           <path d="M15,83 C15,83 27,79, 25,95"
           fill="none" stroke="black" stroke-width="1"/>
-          <text x="28" y="85" font-size="15">{sides[4]}°</text>
+          <text x="28" y="85" font-size="15">{angles[0]}°</text>
         </>
       }
       {has_side_six && 
         <>
           <path d="M30,30 C30,30 47,33, 45,17"
           fill="none" stroke="black" stroke-width="1"/>
-        <text x="40" y="46" font-size="15">{sides[5]}°</text>
+        <text x="40" y="46" font-size="15">{angles[1]}°</text>
 
           {has_side_five && 
             <path d="M30,33 C30,33 50,35, 48,16"
@@ -410,7 +410,7 @@ function Trapezoid({sides, units}){
         <>
           <path d="M127,28 C127,28 110,35, 110,17"
           fill="none" stroke="black" stroke-width="1"/>
-        <text x="95" y="47" font-size="15">{sides[6]}°</text>
+        <text x="95" y="47" font-size="15">{angles[2]}°</text>
 
         {has_side_five &&
           <path d="M127,31 C127,31 107,37, 107,17"
@@ -427,7 +427,7 @@ function Trapezoid({sides, units}){
         <>
           <path d="M150,95 C150,95 150,80, 162,83"
           fill="none" stroke="black" stroke-width="1"/>
-      <text x="120" y="85" font-size="15">{sides[7]}°</text>
+      <text x="120" y="85" font-size="15">{angles[3]}°</text>
 
           {num_of_angles > 1 &&
             <path d="M153,95 C153,95 153,80, 166,87"
@@ -459,13 +459,13 @@ function Trapezoid({sides, units}){
 }
 
 
-function Shape({type, sides, units}){
+function Shape({type, sides, units, angles}){
   
     if(type === 'triangle'){
       return (
         <>
         <div className="shape-holder">
-          <Triangle sides={sides} units={units}/>
+          <Triangle sides={sides} units={units} angles={angles}/>
         </div>
         </>
       )
@@ -475,7 +475,7 @@ function Shape({type, sides, units}){
       return (
         <>
         <div className="shape-holder">
-          <RightTriangle sides={sides} units={units}/>
+          <RightTriangle sides={sides} units={units} angles={angles}/>
         </div>
         </>
       )
@@ -505,7 +505,7 @@ function Shape({type, sides, units}){
       return (
         <>
         <div className="shape-holder">
-        <Rhombus sides={sides} units={units}/>       
+        <Rhombus sides={sides} units={units} angles={angles}/>       
         </div>
         </>
       )
@@ -515,7 +515,7 @@ function Shape({type, sides, units}){
       return (
         <>
         <div className="shape-holder">
-        <Trapezoid sides={sides} units={units}/>
+        <Trapezoid sides={sides} units={units} angles={angles}/>
         </div>
         </>
       )
