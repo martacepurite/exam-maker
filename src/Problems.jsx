@@ -346,22 +346,37 @@ function Problems({viewRef}){
     
     const [title, setTitle] = useState('Test')
     const [name, setName] = useState('Name:')
-    const [variant, setVariant] = useState('Geometry')
+    const [grade, setGrade] = useState('Grade:')
+    const [subtitle, setSubtitle] = useState('Geometry')
+
+    const [hasTitle, setHasTitle] = useState(true)
+    const [hasName, setHasName] = useState(true)
+    const [hasGrade, setHasGrade] = useState(true)
+    const [hasSubtitle, setHasSubtitle] = useState(true)
   
     return (
       <>
         <div >
           
           <div className="problem-div" ref={viewRef}>
-          <div className="title-container">
-            <h1>{title}</h1>
-            <h2>{variant}</h2>
-            
-          </div>
+            <div className="title-container">
+            {hasTitle && 
+              <h1>{title}</h1>
+            } 
+            {hasSubtitle && 
+              <h2>{subtitle}</h2>
+            }
+            </div>
 
-          <div className="title-name-container">
-            <h2>{name} _________ </h2>
-          </div>
+            <div className="title-name-container">
+              {hasName &&
+                  <h2>{name} ____________________________  </h2>
+              }
+              {hasGrade && 
+                  <h2>{grade}_________ </h2>
+              }
+  
+            </div>
           {problems.map(problem =>
             (        
                 <ProblemDisplay 
@@ -376,22 +391,47 @@ function Problems({viewRef}){
   
         <div className="problems-container">
           <div className="title-form-container">
-            <form>
-              <label> Title: 
+              {hasTitle && 
+                <label> Title: 
                   <input type="text" value={title}
                     onChange={(e) => setTitle(e.target.value)}/>
+                    <button onClick={() => {setHasTitle(false)}}>X</button>
                 </label>
-
+              }
+              {!hasTitle &&
+                <button onClick={() => {setHasTitle(true)}}>Add Title</button>
+              }
+              {hasSubtitle && 
                 <label> Subtitle: 
-                  <input type="text" value={variant}
-                    onChange={(e) => setVariant(e.target.value)}/>
-              </label>
+                  <input type="text" value={subtitle}
+                    onChange={(e) => setSubtitle(e.target.value)}/>
+                    <button onClick={() => {setHasSubtitle(false)}}>X</button>
+                </label>
+              }
+              {!hasSubtitle &&
+                <button onClick={() => {setHasSubtitle(true)}}>Add Subtitle</button>
+              }
+              {hasName && 
                 <label> Name: 
                   <input type="text" value={name}
                     onChange={(e) => setName(e.target.value)}/>
+                  <button onClick={() => {setHasName(false)}}>X</button>
                 </label>
+              }
+              {!hasName && 
+                <button onClick={() => {setHasName(true)}}>Add Name</button>
+              }
 
-            </form>
+              {hasGrade && 
+                <label> Grade: 
+                  <input type="text" value={grade}
+                    onChange={(e) => setGrade(e.target.value)}/>
+                  <button onClick={() => {setHasGrade(false)}}>X</button>
+                </label>
+              }
+              {!hasGrade && 
+                <button onClick={() => {setHasGrade(true)}}>Add Grade</button>
+              }
 
           </div>
 

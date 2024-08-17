@@ -158,15 +158,20 @@ label {
 }
 
 .title-name-container h2{
-    font-size: medium;
+    font-size: 17px;
     font-weight: 300;
+    display: inline-grid;
+    padding-right: 5px;
+    
 }
+
 
 .title-form-container {
     padding: 20px;
     margin-bottom: 10px;
     background-color:gainsboro;
     border-radius: 10px;
+    display: grid;
     
 }
 
