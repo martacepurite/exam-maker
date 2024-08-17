@@ -154,7 +154,6 @@ function Problems({viewRef}){
       }else if(chosenShape === 'right-triangle'){
         newSides = ["","","", "", ""]
       }
-      
       else if(chosenShape === 'rectangle'){
         newSides = ["",""]
       }else if(chosenShape === 'square'){
@@ -307,8 +306,6 @@ function Problems({viewRef}){
                     onChange={(e) => setName(e.target.value)}/>
                 </label>
 
-                
-              
             </form>
 
           </div>
@@ -317,8 +314,6 @@ function Problems({viewRef}){
             
           </div>
 
-
-          
           {problems.map(problem =>
             (        
                 <ProblemForm key={problem.id}

@@ -6,15 +6,15 @@ import Problems from "./Problems";
 //TODO
 //page breaks
 
-//support for units of measurement
-//right triangle, isoceles, regular
+//isoceles, regular triangle
 //circles
-//rhombus, parallelogram
+// parallelogram
 //title, name
 //3d shapes
 //test grid
 //lines, charts
 //ANGLES
+//labels for shapes (numbers, letters)
 
 function App(){
 
@@ -71,8 +71,10 @@ function App(){
   return(
     <>
       <Problems viewRef={viewRef}/>
-       
-      <button onClick={handlePrint}>Print</button>
+       <div className="print-button-container">
+          <button onClick={handlePrint}>Print</button>
+       </div>
+      
 
     </>
   )
