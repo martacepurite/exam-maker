@@ -195,7 +195,8 @@ function Problems({viewRef}){
                  type:chosenShape,
                   sides:newSides,
                   angles:newAngles,
-                  letters:newLetters
+                  letters:newLetters,
+                  units:""
                 }]
   
           };
