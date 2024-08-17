@@ -1,8 +1,8 @@
 import { useRef, useEffect, useLayoutEffect, useState } from "react"
 
-function Triangle({sides, units, angles}){
+function Triangle({sides, units, angles, letters}){
 
-  let pts = "40,5 5,90 150,90"
+  let pts = "50,20 15,90 150,90"
 
   const has_units = units!==""
 
@@ -11,7 +11,7 @@ function Triangle({sides, units, angles}){
   if(has_units){
     x_vals = [0,75,50]
   }else{
-    x_vals = [5,85,60]
+    x_vals = [15,85,60]
   }
 
   const has_side_one = sides[0] !== ""
@@ -25,17 +25,21 @@ function Triangle({sides, units, angles}){
 
   return(
     <>
-    <svg width="220" height="125">
+    <svg width="220" height="140">
 
-    <text x={x_vals[0]} y="28" font-size="15" transform="rotate(-65 25,30)">{sides[0]}</text>
-    <text x={x_vals[1]} y="25" font-size="15" transform="rotate(37, 75,25)">{sides[1]}</text>
+    <text x="45" y="15" font-size="15">{letters[0]}</text>
+    <text x="0" y="95" font-size="15">{letters[1]}</text>
+    <text x="158" y="95" font-size="15">{letters[2]}</text>
+
+    <text x={x_vals[0]} y="46" font-size="15" transform="rotate(-62 30,45)">{sides[0]}</text>
+    <text x={x_vals[1]} y="29" font-size="15" transform="rotate(37, 75,25)">{sides[1]}</text>
     <text x={x_vals[2]} y="107" font-size="15">{sides[2]}</text>
 
     {has_side_one &&
-      <text x="18" y="28" font-size="15" transform="rotate(-65 25,30)">{units}</text>
+      <text x="19" y="46" font-size="15" transform="rotate(-62 30,45)">{units}</text>
     }
     {has_side_two &&
-      <text x="95" y="25" font-size="15" transform="rotate(37, 75,25)">{units}</text>
+      <text x="95" y="29" font-size="15" transform="rotate(37, 75,25)">{units}</text>
     }
     {has_side_three &&
       <text x="70" y="107" font-size="15">{units}</text>
@@ -43,11 +47,11 @@ function Triangle({sides, units, angles}){
 
     {has_side_four && 
       <>
-        <text x="25" y="77" font-size="15">{angles[0]}°</text>
-        <path d="M10,75 C10,75 25,70, 25,90"
+        <text x="33" y="77" font-size="15">{angles[0]}°</text>
+        <path d="M20,78 C20,78 33,76, 30,90"
           fill="none" stroke="black" stroke-width="1"/>
         {has_side_six &&
-          <path d="M10,80 C5,80 22,70, 22,90"
+          <path d="M20,81 C20,81 29,77, 28,90"
           fill="none" stroke="black" stroke-width="1"/>
         }
         
@@ -57,17 +61,17 @@ function Triangle({sides, units, angles}){
 
     {has_side_five && 
       <>
-        <text x="40" y="42" font-size="15">{angles[1]}°</text>
-        <path d="M33,23 C33,23 45,30, 53,17"
+        <text x="44" y="53" font-size="15">{angles[1]}°</text>
+        <path d="M45,29 C45,29 55,35, 58,27"
       fill="none" stroke="black" stroke-width="1"/>
 
         {num_of_angles > 1 && 
           <> 
-            <path d="M33,20 C33,20 45,27, 51,15"
+            <path d="M45,32 C45,32 55,37, 60,29"
           fill="none" stroke="black" stroke-width="1"/>
 
               {num_of_angles > 2 &&
-                <path d="M33,26 C33,26 49,33, 56,17"
+                <path d="M43,33 C43,33 55,42, 63,29"
                 fill="none" stroke="black" stroke-width="1"/>
               
               }
@@ -97,7 +101,7 @@ function Triangle({sides, units, angles}){
   )
 }
 
-function RightTriangle({sides, units, angles}){
+function RightTriangle({sides, units, angles, letters}){
 
   const has_units = units!==""
 
@@ -106,7 +110,7 @@ function RightTriangle({sides, units, angles}){
   if(has_units){
     x_vals = [0,65,55]
   }else{
-    x_vals = [13,75,70]
+    x_vals = [13,85,70]
   }
 
   const has_side_one = sides[0] !== ""
@@ -117,41 +121,45 @@ function RightTriangle({sides, units, angles}){
 
   return (
     <>
-      <svg width="220" height="125">
+      <svg width="220" height="155">
 
-      <text x={x_vals[0]} y="43" font-size="15" transform="rotate(-90 15,45)">{sides[0]}</text>
-      <text x={x_vals[1]} y="29" font-size="15" transform="rotate(33, 70,29)">{sides[1]}</text>
-      <text x={x_vals[2]} y="97" font-size="15">{sides[2]}</text>
+      <text x="5" y="20" font-size="15">{letters[0]}</text>
+      <text x="5" y="130" font-size="15">{letters[1]}</text>
+      <text x="148" y="130" font-size="15">{letters[2]}</text>
+
+      <text x={x_vals[0]} y="40" font-size="15" transform="rotate(-90 33,59)">{sides[0]}</text>
+      <text x={x_vals[1]} y="50" font-size="15" transform="rotate(40, 70,29)">{sides[1]}</text>
+      <text x={x_vals[2]} y="135" font-size="15">{sides[2]}</text>
 
 
       {has_side_one && 
-        <text x="19" y="43" font-size="15" transform="rotate(-90 15,45)">{units}</text>
+        <text x="19" y="40" font-size="15" transform="rotate(-90 33,59)">{units}</text>
       }
       {has_side_two && 
-        <text x="83" y="29" font-size="15" transform="rotate(33, 70,29)">{units}</text>
+        <text x="83" y="50" font-size="15" transform="rotate(40, 70,29)">{units}</text>
       }
       {has_side_three && 
-        <text x="73" y="97" font-size="15">{units}</text>
+        <text x="74" y="135" font-size="15">{units}</text>
       }
 
-      <polyline points="20,63 35,63 35,80"
+      <polyline points="20,103 35,103 35,120"
       fill="none" stroke="black" stroke-width="1"/>
 
       {has_side_four && 
         <>
-          <text x="25" y="37" font-size="15">{angles[0]}°</text>
-        <path d="M20,20 C20,20 30,25, 33,13"
+          <text x="25" y="67" font-size="15">{angles[0]}°</text>
+        <path d="M20,45 C20,45 33,50, 33,35"
         fill="none" stroke="black" stroke-width="1"/>
         </>
         
       }
       {has_side_five &&
         <>
-          <text x="80" y="73" font-size="15">{angles[1]}°</text>
-          <path d="M113,80 C113,80 110,72, 118,67"
+          <text x="80" y="113" font-size="15">{angles[1]}°</text>
+          <path d="M113,120 C113,120 110,107, 118,105"
         fill="none" stroke="black" stroke-width="1"/>
           {has_side_four && 
-            <path d="M110,80 C110,80 107,70, 117,65"
+            <path d="M116,120 C116,120 112,107, 123,105"
             fill="none" stroke="black" stroke-width="1"/>
           
           }
@@ -160,7 +168,7 @@ function RightTriangle({sides, units, angles}){
         
       }
 
-      <polygon points="20,5 20,80 140,80"
+      <polygon points="20,25 20,120 140,120"
       fill="none"
       stroke="black"
         stroke-width="3"
@@ -171,7 +179,7 @@ function RightTriangle({sides, units, angles}){
   )
 }
 
-function Square({sides,units}){
+function Square({sides,units, letters}){
 
   const has_units = units!==""
 
@@ -188,6 +196,11 @@ function Square({sides,units}){
   return (
     <>
       <svg width="200" height="150">
+
+        <text x="7" y="27" font-size="15">{letters[0]}</text>
+        <text x="123" y="27" font-size="15">{letters[1]}</text>
+        <text x="125" y="140" font-size="15">{letters[2]}</text>
+        <text x="5" y="141" font-size="15">{letters[3]}</text>
           
           <text x={x_vals[0]} y="100" font-size="15" transform="rotate(-90 10,95)">{sides[0]}</text>
           <text x={x_vals[1]} y="55" font-size="15" transform="rotate(90 100,80)">{sides[0]}</text>
@@ -213,7 +226,7 @@ function Square({sides,units}){
   )
 }
 
-function Rectangle({sides, units}){
+function Rectangle({sides, units, letters}){
 
   const has_units = units!==""
 
@@ -231,6 +244,13 @@ function Rectangle({sides, units}){
   return (
     <>
       <svg width="200" height="160">
+
+        <text x="5" y="31" font-size="15">{letters[0]}</text>
+        <text x="165" y="31" font-size="15">{letters[1]}</text>
+        <text x="165" y="131" font-size="15">{letters[2]}</text>
+        <text x="5" y="131" font-size="15">{letters[3]}</text>
+
+
           <rect width="140" height="90" x="20" y="30"
             fill="none"
             stroke="black"
@@ -259,15 +279,15 @@ function Rectangle({sides, units}){
   )
 }
 
-function Rhombus({sides, units, angles}){
+function Rhombus({sides, units, angles, letters}){
   const has_units = units!==""
 
   let x_vals 
 
   if(has_units){
-    x_vals = [15,92,8,90]
+    x_vals = [20,110,28,90]
   }else{
-    x_vals = [30,100,20,100]
+    x_vals = [35,130,47,100]
   }
 
   const has_side_one = sides[0] !== ""
@@ -276,14 +296,19 @@ function Rhombus({sides, units, angles}){
 
   return (
     <>
-      <svg width="200" height="110">
+      <svg width="200" height="155">
 
-      <text x={x_vals[0]} y="30" font-size="15" transform="rotate(-39 30,30)">{sides[0]}</text>
-      <text x={x_vals[1]} y="31" font-size="15" transform="rotate(35 115,30)">{sides[0]}</text>
-      <text x={x_vals[2]} y="80" font-size="15" transform="rotate(35 10,90)">{sides[0]}</text>
-      <text x={x_vals[3]} y="102" font-size="15" transform="rotate(-35 90,80)">{sides[0]}</text>
+      <text x="0" y="80" font-size="15">{letters[0]}</text>
+      <text x="90" y="11" font-size="15">{letters[1]}</text>
+      <text x="180" y="80" font-size="15">{letters[2]}</text>
+      <text x="90" y="145" font-size="15">{letters[3]}</text>
 
-          <polygon points="70,5 5,55 70,100 140,55"
+      <text x={x_vals[0]} y="50" font-size="15" transform="rotate(-35 30,30)">{sides[0]}</text>
+      <text x={x_vals[1]} y="25" font-size="15" transform="rotate(38 115,30)">{sides[0]}</text>
+      <text x={x_vals[2]} y="90" font-size="15" transform="rotate(35 10,90)">{sides[0]}</text>
+      <text x={x_vals[3]} y="140" font-size="15" transform="rotate(-35 90,80)">{sides[0]}</text>
+
+          <polygon points="95,15 15,75 95,130 175,75"
             fill="none"
             stroke="black"
           stroke-width="3"
@@ -291,30 +316,30 @@ function Rhombus({sides, units, angles}){
           />
          {has_side_one && 
           <>
-            <text x="34" y="30" font-size="15" transform="rotate(-39 30,30)">{units}</text>
-            <text x="111" y="31" font-size="15" transform="rotate(35 115,30)">{units}</text>
-            <text x="27" y="80" font-size="15" transform="rotate(35 10,90)">{units}</text>
-            <text x="109" y="102" font-size="15" transform="rotate(-35 90,80)">{units}</text>
+            <text x="41" y="50" font-size="15" transform="rotate(-35 30,30)">{units}</text>
+            <text x="131" y="25" font-size="15" transform="rotate(38 115,30)">{units}</text>
+            <text x="47" y="90" font-size="15" transform="rotate(35 10,90)">{units}</text>
+            <text x="109" y="140" font-size="15" transform="rotate(-35 90,80)">{units}</text>
             
           </>
          }
 
          {has_side_two &&
           <>
-                <path d="M17,45 C17,45 27,55, 17,64"
+                <path d="M28,65 C28,65 40,75, 28,84"
               fill="none" stroke="black" stroke-width="1"/>
-              <text x="25" y="60" font-size="15">{angles[0]}°</text>
+              <text x="40" y="80" font-size="15">{angles[0]}°</text>
 
-              <path d="M125,45 C125,45 115,55, 125,64"
+              <path d="M160,65 C160,65 150,75, 160,84"
               fill="none" stroke="black" stroke-width="1"/>
-              <text x="95" y="60" font-size="15">{angles[0]}°</text>
+              <text x="115" y="80" font-size="15">{angles[0]}°</text>
 
               {has_side_three && 
                 <>
-                  <path d="M14,47 C14,47 24,55, 14,63"
+                  <path d="M25,67 C25,67 37,75, 25,83"
                   fill="none" stroke="black" stroke-width="1"/>
 
-                  <path d="M127,47 C127,47 119,55, 127,63"
+                  <path d="M163,67 C163,67 153,75, 163,83"
                   fill="none" stroke="black" stroke-width="1"/> 
                 </>
               }
@@ -325,13 +350,13 @@ function Rhombus({sides, units, angles}){
 
          {has_side_three &&
           <>
-              <path d="M60,13 C60,13 70,25, 80,13"
+              <path d="M80,25 C80,25 95,37, 110,25"
             fill="none" stroke="black" stroke-width="1"/>
-            <text x="57" y="35" font-size="15">{angles[1]}°</text>
+            <text x="80" y="50" font-size="15">{angles[1]}°</text>
 
-            <path d="M60,95 C60,95 70,80, 80,95"
+            <path d="M80,120 C80,120 95,108, 110,120"
             fill="none" stroke="black" stroke-width="1"/>
-            <text x="57" y="83" font-size="15">{angles[1]}°</text>
+            <text x="80" y="107" font-size="15">{angles[1]}°</text>
           
           </>
          
@@ -341,14 +366,14 @@ function Rhombus({sides, units, angles}){
   )
 }
 
-function Trapezoid({sides, units, angles}){
+function Trapezoid({sides, units, angles, letters}){
 
   const has_units = units!==""
 
   let x_vals 
 
   if(has_units){
-    x_vals = [5,55,55,120]
+    x_vals = [0,55,55,120]
   }else{
     x_vals = [15,65,75,128]
   }
@@ -368,13 +393,18 @@ function Trapezoid({sides, units, angles}){
     <>
       <svg width="200" height="130">
 
-      <text x={x_vals[0]} y="50" font-size="15" transform="rotate(-73 18,50)">{sides[0]}</text>
+        <text x="20" y="15" font-size="15">{letters[0]}</text>
+        <text x="124" y="15" font-size="15">{letters[1]}</text>
+        <text x="177" y="100" font-size="15">{letters[2]}</text>
+        <text x="0" y="100" font-size="15">{letters[3]}</text>
+
+      <text x={x_vals[0]} y="53" font-size="15" transform="rotate(-75 18,50)">{sides[0]}</text>
       <text x={x_vals[1]} y="12" font-size="15" >{sides[1]}</text>
       <text x={x_vals[2]} y="111" font-size="15" >{sides[2]}</text>
       <text x={x_vals[3]} y="30" font-size="15" transform="rotate(60 125,50)">{sides[3]}</text>
       
       {has_side_one &&
-          <text x="24" y="50" font-size="15" transform="rotate(-73 18,50)">{units}</text>
+          <text x="20" y="53" font-size="15" transform="rotate(-75 18,50)">{units}</text>
       }
       {has_side_two &&
         <text x="73" y="12" font-size="15" >{units}</text>
@@ -388,7 +418,7 @@ function Trapezoid({sides, units, angles}){
 
       {has_side_five &&
         <>
-          <path d="M15,83 C15,83 27,79, 25,95"
+          <path d="M17,84 C17,84 28,81, 25,95"
           fill="none" stroke="black" stroke-width="1"/>
           <text x="28" y="85" font-size="15">{angles[0]}°</text>
         </>
@@ -446,7 +476,7 @@ function Trapezoid({sides, units, angles}){
         </>
       }
 
-      <polygon points="10,95 35,17 120,17 170,95"
+      <polygon points="15,95 35,17 120,17 170,95"
             fill="none"
             stroke="black"
           stroke-width="3"
@@ -458,14 +488,94 @@ function Trapezoid({sides, units, angles}){
   )
 }
 
+function IsocelesTriangle({sides, units, angles, letters}){
 
-function Shape({type, sides, units, angles}){
+  let pts = "80,20 35,120 130,120"
+
+  const has_units = units!==""
+
+  let x_vals 
+
+  if(has_units){
+    x_vals = [25,85,60]
+  }else{
+    x_vals = [25,110,70]
+  }
+
+  const has_side_one = sides[0] !== ""
+  const has_side_two = sides[1] !== ""
+  const has_angle_one = angles[0] !== ""
+  const has_angle_two = angles[1] !== ""
+
+  return(
+    <>
+    <svg width="220" height="140">
+
+      <text x="19" y="125" font-size="15">{letters[0]}</text>
+      <text x="75" y="12" font-size="15">{letters[1]}</text>
+      <text x="135" y="125" font-size="15">{letters[2]}</text>
+
+
+    <text x={x_vals[0]} y="83" font-size="15" transform="rotate(-64 30,60)">{sides[0]}</text>
+    <text x={x_vals[1]} y="17" font-size="15" transform="rotate(64 70,40)">{sides[0]}</text>
+    <text x={x_vals[2]} y="135" font-size="15">{sides[1]}</text>
+
+    {has_side_one &&
+      <>
+        <text x="45" y="83" font-size="15" transform="rotate(-64 30,60)">{units}</text>
+        <text x="105" y="17" font-size="15" transform="rotate(64 70,40)">{units}</text>
+      </>
+      
+    }
+    {has_side_two &&
+      <text x="80" y="135" font-size="15">{units}</text>
+
+    }
+    {has_angle_one &&
+      <>
+         <text x="54" y="110" font-size="15">{angles[0]}°</text>
+         <path d="M114,120 C114,120 112,107, 123,105"
+            fill="none" stroke="black" stroke-width="1"/>
+          <path d="M50,120 C50,120 55,107, 42,105"
+            fill="none" stroke="black" stroke-width="1"/>
+
+      </>
+    }
+
+    {has_angle_two &&
+      <>
+        <text x="70" y="63" font-size="15">{angles[1]}°</text>
+        <path d="M74,33 C74,33 80,45, 87,33"
+            fill="none" stroke="black" stroke-width="1"/>
+
+        {has_angle_one && 
+          <path d="M74,38 C74,38 80,45, 87,38"
+          fill="none" stroke="black" stroke-width="1"/>
+        }
+        
+      </>
+    }
+    
+
+    <polygon points={pts}
+         fill="none"
+         stroke="black"
+          stroke-width="3"
+      ></polygon>
+
+    </svg>
+    </>
+  )
+}
+
+
+function Shape({type, sides, units, angles, letters}){
   
     if(type === 'triangle'){
       return (
         <>
         <div className="shape-holder">
-          <Triangle sides={sides} units={units} angles={angles}/>
+          <Triangle sides={sides} units={units} angles={angles} letters={letters}/>
         </div>
         </>
       )
@@ -475,7 +585,17 @@ function Shape({type, sides, units, angles}){
       return (
         <>
         <div className="shape-holder">
-          <RightTriangle sides={sides} units={units} angles={angles}/>
+          <RightTriangle sides={sides} units={units} angles={angles} letters={letters}/>
+        </div>
+        </>
+      )
+    }
+
+    if(type === 'isoceles-triangle'){
+      return (
+        <>
+        <div className="shape-holder">
+          <IsocelesTriangle sides={sides} units={units} angles={angles} letters={letters}/>
         </div>
         </>
       )
@@ -485,7 +605,7 @@ function Shape({type, sides, units, angles}){
       return (
         <>
         <div className="shape-holder">
-        <Rectangle sides={sides} units={units}/>       
+        <Rectangle sides={sides} units={units} letters={letters}/>       
         </div>
         </>
       )
@@ -495,7 +615,7 @@ function Shape({type, sides, units, angles}){
       return (
         <>
         <div className="shape-holder">
-        <Square sides={sides} units={units}/>        
+        <Square sides={sides} units={units} letters={letters}/>        
         </div>
         </>
       )
@@ -505,7 +625,7 @@ function Shape({type, sides, units, angles}){
       return (
         <>
         <div className="shape-holder">
-        <Rhombus sides={sides} units={units} angles={angles}/>       
+        <Rhombus sides={sides} units={units} angles={angles} letters={letters}/>       
         </div>
         </>
       )
@@ -515,7 +635,7 @@ function Shape({type, sides, units, angles}){
       return (
         <>
         <div className="shape-holder">
-        <Trapezoid sides={sides} units={units} angles={angles}/>
+        <Trapezoid sides={sides} units={units} angles={angles} letters={letters}/>
         </div>
         </>
       )

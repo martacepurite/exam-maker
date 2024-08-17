@@ -3,10 +3,12 @@ import { useState } from "react"
 const shape_icons = {
   'triangle': "Triangle",
   'right-triangle': "Right Triangle",
+  'isoceles-triangle': "Isoceles Triangle",
   'rectangle': "Rectangle",
   'square': "Square",
   'rhombus': "Rhombus",
-  'trapezoid': "Trapezoid"
+  'trapezoid': "Trapezoid",
+
 }
 
 function ProblemForm({
@@ -20,7 +22,8 @@ function ProblemForm({
     handleDeleteShape,
     handleSetSides,
     handleSetUnits,
-    handleSetAngles
+    handleSetAngles,
+    handleSetLetters
   }){
   
       const [isVisible, setIsVisible] = useState(true)
@@ -87,6 +90,16 @@ function ProblemForm({
                     </form>
 
                   }
+
+                  <form onSubmit={(e)=>{handleSetLetters(problem.id, shape.id, e)}}className="shape-sides-form">
+                  <label> Letters:
+                    {shape.letters.map(side => (
+                        <input type="text" name="shape-side"/>
+                      ))}
+                      </label>
+                      <button type="submit">Set</button>
+
+                  </form>
                     
                     
                     <form onSubmit={(e)=>{handleSetUnits(problem.id, shape.id, e)}} className="shape-units-form">
@@ -114,6 +127,7 @@ function ProblemForm({
                     <select name="select-shape">
                         <option value="triangle">Triangle</option>
                         <option value="right-triangle">Right Triangle</option>
+                        <option value="isoceles-triangle">Isoceles Triangle</option>
                         <option value="rectangle">Rectangle</option>
                         <option value="square">Square</option>
                         <option value="rhombus">Rhombus</option>

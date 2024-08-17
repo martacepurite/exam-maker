@@ -25,7 +25,8 @@ function Problems({viewRef}){
             type: 'triangle',
             sides: [3, 4, 5],
             angles: [30, 30, 120],
-            units: 'cm'
+            units: 'cm',
+            letters: ["A","B","C"]
             
           }
         ]
@@ -42,7 +43,8 @@ function Problems({viewRef}){
             type: 'rhombus',
             sides: [3],
             angles: [40, 140],
-            units: 'dm'
+            units: 'dm',
+            letters: ["A","B","C","D"]
           }
         ]
       },
@@ -151,24 +153,36 @@ function Problems({viewRef}){
   
       let newSides = []
       let newAngles = []
+      let newLetters = []
   
       if(chosenShape === 'triangle') {
         newSides = ["","",""]
         newAngles = ["", "", ""]
+        newLetters = ["", "", ""]
       }else if(chosenShape === 'right-triangle'){
         newSides = ["","",""]
         newAngles = ["", ""]
+        newLetters = ["", "", ""]
+      }
+      else if(chosenShape === 'isoceles-triangle'){
+        newSides = ["",""]
+        newAngles = ["", ""]
+        newLetters = ["", "", ""]
       }
       else if(chosenShape === 'rectangle'){
         newSides = ["",""]
+        newLetters = ["", "", "", ""]
       }else if(chosenShape === 'square'){
         newSides = [""]
+        newLetters = ["", "", "", ""]
       }else if(chosenShape === 'rhombus'){
         newSides = [""]
         newAngles = ["", ""]
+        newLetters = ["", "", "", ""]
       }else if(chosenShape === 'trapezoid'){
         newSides = ["","","", ""]
         newAngles = ["", "", "", ""]
+        newLetters = ["", "", "", ""]
       }
   
       const nextProblems = (problems.map(problem => {
@@ -180,7 +194,8 @@ function Problems({viewRef}){
                {id:crypto.randomUUID(),
                  type:chosenShape,
                   sides:newSides,
-                  angles:newAngles
+                  angles:newAngles,
+                  letters:newLetters
                 }]
   
           };
@@ -221,7 +236,7 @@ function Problems({viewRef}){
               ...problem.shapes.map(sha => {
                 
                 if(sha.id === idshape){
-                  return {id:idshape, type:sha.type, sides:data, angles:sha.angles, units:sha.units}
+                  return {...sha, sides:data}
                 }else{
                   return sha;
                 }
@@ -251,7 +266,7 @@ function Problems({viewRef}){
               ...problem.shapes.map(sha => {
                 
                 if(sha.id === idshape){
-                  return {id:idshape, type:sha.type, sides:sha.sides,angles:sha.angles, units:data[0]}
+                  return {...sha, units:data[0]}
                 }else{
                   return sha;
                 }
@@ -281,7 +296,37 @@ function Problems({viewRef}){
               ...problem.shapes.map(sha => {
                 
                 if(sha.id === idshape){
-                  return {id:idshape, type:sha.type, sides:sha.sides,angles:data, units:sha.units}
+                  return {...sha, angles:data}
+                }else{
+                  return sha;
+                }
+                
+              })]
+  
+          };
+        }else{
+          return problem;
+        }
+        
+      }))
+  
+      setProblems(nextProblems) 
+    }
+
+    function handleSetLetters(idprob, idshape,e){
+      e.preventDefault()
+      const formData = new FormData(e.target)
+      const data = [...formData.values()]
+  
+      const nextProblems = (problems.map(problem => {
+        if(problem.id === idprob){
+  
+          return {...problem,
+            shapes:[
+              ...problem.shapes.map(sha => {
+                
+                if(sha.id === idshape){
+                  return {...sha, letters:data}
                 }else{
                   return sha;
                 }
@@ -367,6 +412,7 @@ function Problems({viewRef}){
                  handleSetSides={handleSetSides}
                  handleSetUnits={handleSetUnits}
                  handleSetAngles={handleSetAngles}
+                 handleSetLetters={handleSetLetters}
                  ></ProblemForm>
             )
           )}
