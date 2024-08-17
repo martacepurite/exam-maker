@@ -359,24 +359,30 @@ function Problems({viewRef}){
         <div >
           
           <div className="problem-div" ref={viewRef}>
-            <div className="title-container">
-            {hasTitle && 
-              <h1>{title}</h1>
-            } 
-            {hasSubtitle && 
-              <h2>{subtitle}</h2>
-            }
-            </div>
 
-            <div className="title-name-container">
-              {hasName &&
-                  <h2>{name} ____________________________  </h2>
-              }
-              {hasGrade && 
-                  <h2>{grade}_________ </h2>
-              }
-  
-            </div>
+            {(hasTitle || hasSubtitle) &&
+                <div className="title-container">
+                    {hasTitle &&
+                        <h1>{title}</h1>
+                    } 
+                    {hasSubtitle &&
+                        <h2>{subtitle}</h2>
+                    }
+                </div>
+            }
+            
+            {(hasGrade || hasName) &&
+                <div className="title-name-container">
+                    {hasName &&
+                        <h2>{name} ____________________________  </h2>
+                    }
+                    {hasGrade && 
+                        <h2>{grade}_________ </h2>
+                    }
+    
+                </div>
+            }
+            
           {problems.map(problem =>
             (        
                 <ProblemDisplay 
