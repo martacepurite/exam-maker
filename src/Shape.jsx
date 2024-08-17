@@ -6,11 +6,9 @@ function Triangle({sides, units, angles, letters}){
 
   const has_units = units!==""
 
-  let x_vals 
+  let x_vals = [0,75,50]
 
-  if(has_units){
-    x_vals = [0,75,50]
-  }else{
+  if(!has_units){
     x_vals = [15,85,60]
   }
 
@@ -105,11 +103,9 @@ function RightTriangle({sides, units, angles, letters}){
 
   const has_units = units!==""
 
-  let x_vals 
+  let x_vals = [0,65,55];
 
-  if(has_units){
-    x_vals = [0,65,55]
-  }else{
+  if(!has_units){
     x_vals = [13,85,70]
   }
 
@@ -183,11 +179,9 @@ function Square({sides,units, letters}){
 
   const has_units = units!==""
 
-  let x_vals 
+  let x_vals = [10,80,50,50]
 
-  if(has_units){
-    x_vals = [10,80,50,50]
-  }else{
+  if(!has_units){
     x_vals = [20,95,65,65]
   }
 
@@ -230,11 +224,9 @@ function Rectangle({sides, units, letters}){
 
   const has_units = units!==""
 
-  let x_vals 
+  let x_vals = [25,145,75,75]
 
-  if(has_units){
-    x_vals = [25,145,75,75]
-  }else{
+  if(!has_units){
     x_vals = [35,155,85,85]
   }
 
@@ -282,11 +274,9 @@ function Rectangle({sides, units, letters}){
 function Rhombus({sides, units, angles, letters}){
   const has_units = units!==""
 
-  let x_vals 
+  let x_vals = [20,110,28,90]
 
-  if(has_units){
-    x_vals = [20,110,28,90]
-  }else{
+  if(!has_units){
     x_vals = [35,130,47,100]
   }
 
@@ -370,11 +360,9 @@ function Trapezoid({sides, units, angles, letters}){
 
   const has_units = units!==""
 
-  let x_vals 
+  let x_vals = [0,55,55,120]
 
-  if(has_units){
-    x_vals = [0,55,55,120]
-  }else{
+  if(!has_units){
     x_vals = [15,65,75,128]
   }
 
@@ -494,11 +482,9 @@ function IsocelesTriangle({sides, units, angles, letters}){
 
   const has_units = units!==""
 
-  let x_vals 
+  let x_vals = [25,85,60] 
 
-  if(has_units){
-    x_vals = [25,85,60]
-  }else{
+  if(!has_units){
     x_vals = [25,110,70]
   }
 
