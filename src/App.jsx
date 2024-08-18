@@ -8,13 +8,12 @@ import Problems from "./Problems";
 
 //isoceles, regular triangle
 //circles
-// parallelogram
+// parallelogram, 
 //title, name
 //3d shapes
 //test grid
 //lines, charts
 //ANGLES
-//labels for shapes (numbers, letters)
 
 function App(){
 

@@ -8,6 +8,7 @@ const shape_icons = {
   'square': "Square",
   'rhombus': "Rhombus",
   'trapezoid': "Trapezoid",
+  'isoceles-trapezoid':"Isoceles Trapezoid"
 
 }
 
@@ -132,6 +133,7 @@ function ProblemForm({
                         <option value="square">Square</option>
                         <option value="rhombus">Rhombus</option>
                         <option value="trapezoid">Trapezoid</option>
+                        <option value="isoceles-trapezoid">Isoceles Trapezoid</option>
                         
                     </select>
                         <button type="submit">Create</button>

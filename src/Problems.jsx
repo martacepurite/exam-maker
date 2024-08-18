@@ -183,6 +183,10 @@ function Problems({viewRef}){
         newSides = ["","","", ""]
         newAngles = ["", "", "", ""]
         newLetters = ["", "", "", ""]
+      }else if(chosenShape === 'isoceles-trapezoid'){
+        newSides = ["","",""]
+        newAngles = ["", ""]
+        newLetters = ["", "", "", ""]
       }
   
       const nextProblems = (problems.map(problem => {
