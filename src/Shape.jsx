@@ -25,6 +25,12 @@ function Triangle({sides, units, angles, letters}){
     <>
     <svg width="220" height="140">
 
+    <polygon points={pts}
+         fill="none"
+         stroke="black"
+          strokeWidth="3"
+      ></polygon>
+
     <text x="45" y="15" fontSize="15">{letters[0]}</text>
     <text x="0" y="95" fontSize="15">{letters[1]}</text>
     <text x="158" y="95" fontSize="15">{letters[2]}</text>
@@ -89,11 +95,7 @@ function Triangle({sides, units, angles, letters}){
       
     }
 
-      <polygon points={pts}
-         fill="none"
-         stroke="black"
-          strokeWidth="3"
-      ></polygon>
+      
     </svg>
     </>
   )
@@ -119,6 +121,15 @@ function RightTriangle({sides, units, angles, letters}){
     <>
       <svg width="220" height="155">
 
+      <polygon points="20,25 20,120 140,120"
+      fill="none"
+      stroke="black"
+        strokeWidth="3"
+      ></polygon>
+
+      <polyline points="20,103 35,103 35,120"
+      fill="none" stroke="black" strokeWidth="1"/>
+
       <text x="5" y="20" fontSize="15">{letters[0]}</text>
       <text x="5" y="130" fontSize="15">{letters[1]}</text>
       <text x="148" y="130" fontSize="15">{letters[2]}</text>
@@ -138,8 +149,7 @@ function RightTriangle({sides, units, angles, letters}){
         <text x="74" y="135" fontSize="15">{units}</text>
       }
 
-      <polyline points="20,103 35,103 35,120"
-      fill="none" stroke="black" strokeWidth="1"/>
+      
 
       {has_side_four && 
         <>
@@ -164,11 +174,7 @@ function RightTriangle({sides, units, angles, letters}){
         
       }
 
-      <polygon points="20,25 20,120 140,120"
-      fill="none"
-      stroke="black"
-        strokeWidth="3"
-      ></polygon>
+      
 
       </svg>
     </>
@@ -288,6 +294,13 @@ function Rhombus({sides, units, angles, letters}){
     <>
       <svg width="200" height="155">
 
+      <polygon points="95,15 15,75 95,130 175,75"
+            fill="none"
+            stroke="black"
+          strokeWidth="3"
+          
+          />
+
       <text x="0" y="80" fontSize="15">{letters[0]}</text>
       <text x="90" y="11" fontSize="15">{letters[1]}</text>
       <text x="180" y="80" fontSize="15">{letters[2]}</text>
@@ -298,12 +311,7 @@ function Rhombus({sides, units, angles, letters}){
       <text x={x_vals[2]} y="90" fontSize="15" transform="rotate(35 10,90)">{sides[0]}</text>
       <text x={x_vals[3]} y="140" fontSize="15" transform="rotate(-35 90,80)">{sides[0]}</text>
 
-          <polygon points="95,15 15,75 95,130 175,75"
-            fill="none"
-            stroke="black"
-          strokeWidth="3"
           
-          />
          {has_side_one && 
           <>
             <text x="41" y="50" fontSize="15" transform="rotate(-35 30,30)">{units}</text>
@@ -380,6 +388,13 @@ function Trapezoid({sides, units, angles, letters}){
   return (
     <>
       <svg width="200" height="130">
+
+      <polygon points="15,95 35,17 120,17 170,95"
+            fill="none"
+            stroke="black"
+          strokeWidth="3"
+          
+          />
 
         <text x="20" y="15" fontSize="15">{letters[0]}</text>
         <text x="124" y="15" fontSize="15">{letters[1]}</text>
@@ -464,12 +479,7 @@ function Trapezoid({sides, units, angles, letters}){
         </>
       }
 
-      <polygon points="15,95 35,17 120,17 170,95"
-            fill="none"
-            stroke="black"
-          strokeWidth="3"
-          
-          />
+      
 
       </svg>
     </>
@@ -496,6 +506,13 @@ function IsocelesTriangle({sides, units, angles, letters}){
   return(
     <>
     <svg width="220" height="140">
+
+
+    <polygon points={pts}
+         fill="none"
+         stroke="black"
+          strokeWidth="3"
+      ></polygon>
 
       <text x="19" y="125" fontSize="15">{letters[0]}</text>
       <text x="75" y="12" fontSize="15">{letters[1]}</text>
@@ -543,11 +560,6 @@ function IsocelesTriangle({sides, units, angles, letters}){
     }
     
 
-    <polygon points={pts}
-         fill="none"
-         stroke="black"
-          strokeWidth="3"
-      ></polygon>
 
     </svg>
     </>
@@ -567,6 +579,13 @@ function IsocelesTrapezoid({sides, units, angles, letters}){
   return (
     <>  
       <svg width="200" height="155">
+
+      <polygon points="30,100 50,20 150,20 170,100"
+                fill="none"
+                stroke="black"
+              strokeWidth="3"
+              
+        />
         <text x="35" y="20" fontSize="15">{letters[0]}</text>
         <text x="155" y="20" fontSize="15">{letters[1]}</text>
         <text x="175" y="110" fontSize="15">{letters[2]}</text>
@@ -619,12 +638,7 @@ function IsocelesTrapezoid({sides, units, angles, letters}){
           </>
         }
 
-        <polygon points="30,100 50,20 150,20 170,100"
-                fill="none"
-                stroke="black"
-              strokeWidth="3"
-              
-        />
+        
 
       </svg>
     </>
