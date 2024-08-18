@@ -68,7 +68,7 @@ function ProblemForm({
   
                 {problem.shapes.map(shape => (
                   <div key={shape.id} className="shape-settings-container">
-                    <label>{shape_icons[shape.type]}
+                    <div className="shape-label">{shape_icons[shape.type]} </div>
                     <form onSubmit={(e)=>{handleSetSides(problem.id, shape.id, e)}} className="shape-sides-form"> 
                     <label> Sides:
                       {shape.sides.map(side => (
@@ -115,7 +115,7 @@ function ProblemForm({
                         </label>
                         <button type="submit">Set</button>
                     </form>
-                    </label>
+                    
                     
                     </div>
                 ))}

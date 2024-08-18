@@ -1,15 +1,12 @@
-import { useState, useContext, createContext, useReducer, useRef } from "react";
-import jsPDF, { GState } from "jspdf";
+import {useRef } from "react";
+import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import Problems from "./Problems";
 
 //TODO
-//page breaks
-
-//isoceles, regular triangle
+//regular triangle
 //circles
 // parallelogram, 
-//title, name
 //3d shapes
 //test grid
 //lines, charts

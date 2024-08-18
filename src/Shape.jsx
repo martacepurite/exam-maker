@@ -1,4 +1,3 @@
-import { useRef, useEffect, useLayoutEffect, useState } from "react"
 
 function Triangle({sides, units, angles, letters}){
 
@@ -645,6 +644,86 @@ function IsocelesTrapezoid({sides, units, angles, letters}){
   )
 }
 
+// const shape_coords = {
+//   triangle:{
+//       poly_points: "50,20 15,90 150,90",
+//       label_one: [15,46,"rotate(-62 30,45)"],
+//       label_two: [75,29,"rotate(37, 75,25)"]
+
+//   },
+//   'right-triangle':{
+//       poly_points: "20,25 20,120 140,120",
+//       label_one: [13,40,"rotate(-90 33,59)"],
+//       label_two: [75,29,"rotate(37, 75,25)"]
+//   },
+//   rhombus:{
+//       poly_points: "95,15 15,75 95,130 175,75",
+//       label_one: [20,50,"rotate(-35 30,30)"],
+//       label_two: [75,29,"rotate(37, 75,25)"]
+//   },
+//   square: {
+//       poly_points: "25,20 25,120 125,120 125,20",
+//       label_one: [13,45,"rotate(-90 33,59)"],
+//       label_two: [75,29,"rotate(37, 75,25)"]
+//   },
+//   rectangle: {
+//       poly_points: "25,20 25,120 155,120 155,20",
+//       label_one: [13,45,"rotate(-90 33,59)"],
+//       label_two: [75,29,"rotate(37, 75,25)"]
+//   },
+//   trapezoid: {
+//       poly_points: "15,95 35,17 120,17 170,95",
+//       label_one: [0,52,"rotate(-75 18,50)"],
+//       label_two: [75,29,"rotate(37, 75,25)"]
+//   },
+//   'isoceles-triangle': {
+//       poly_points: "80,20 35,120 130,120",
+//       label_one: [15,83,"rotate(-64 30,60)"],
+//       label_two: [75,29,"rotate(37, 75,25)"]
+//   },
+//   'isoceles-trapezoid': {
+//       poly_points: "30,100 50,20 150,20 170,100",
+//       label_one: [20,80,"rotate(-73 20,70)"],
+//       label_two: [75,29,"rotate(37, 75,25)"]
+//   }
+  
+// }
+
+// function Shape({type, sides, units, angles, letters}){
+
+//   return (
+//     <div className="shape-holder">
+//       <svg width="220" height="150">
+
+//             <polygon points={shape_coords[type].poly_points}
+//               fill="none"
+//               stroke="black"
+//                 strokeWidth="3"
+//             ></polygon>
+
+
+//           <text x={shape_coords[type].label_one[0]} y={shape_coords[type].label_one[1]}
+//             transform={shape_coords[type].label_one[2]} fontSize="15"
+//           >{sides[0]}{units}</text>
+
+//               <text x={shape_coords[type].label_two[0]} y={shape_coords[type].label_two[1]}
+//               transform={shape_coords[type].label_two[2]} fontSize="15"
+//               >
+
+//                 {sides[1] && 
+//                   <>
+//                   {sides[1]}{units}
+//                   </>
+//                 }
+          
+//               </text>
+  
+//       </svg>
+//     </div>
+//   )
+
+
+// }
 
 function Shape({type, sides, units, angles, letters}){
   
