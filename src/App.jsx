@@ -1,4 +1,4 @@
-import {useRef } from "react";
+import { useRef } from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import Problems from "./Problems";
@@ -12,22 +12,22 @@ import Problems from "./Problems";
 //lines, charts
 //ANGLES
 
-function App(){
+function App() {
 
   const viewRef = useRef(null)
 
-  function handlePrint(){
+  function handlePrint() {
 
     let page = viewRef.current
 
     let chi = page.children
 
     const pdf = new jsPDF(
-      "p","px","a4"
+      "p", "px", "a4"
     );
 
     let scale = 2;
-    let print_scale = scale*1.5;
+    let print_scale = scale * 1.5;
     let top_margin = 20;
     let left_margin = 40;
     let page_height = 1122;
@@ -36,41 +36,43 @@ function App(){
     let arr = Array.from(chi)
 
     const tasks = arr.map(tab => html2canvas(tab,
-      {scale: scale,
-        
+      {
+        scale: scale,
+
       }
     ))
 
     let coord = top_margin;
 
-    Promise.all(tasks).then(canvases =>
-    {
-      for (const canvas of canvases)
-      {   
+    Promise.all(tasks).then(canvases => {
+      for (const canvas of canvases) {
         let imgData = canvas.toDataURL('image/png', 1.0);
-        let height = canvas.height/print_scale;
-        let width = canvas.width/print_scale;
+        let height = canvas.height / print_scale;
+        let width = canvas.width / print_scale;
 
-        if(coord + height > 500){
+        if (coord + height > 500) {
           pdf.addPage()
           coord = 20;
         }
         pdf.addImage(imgData, 'PNG', left_margin, coord, width, height);
-        coord += canvas.height/print_scale
-        
-        }
+        coord += canvas.height / print_scale
+
+      }
 
       pdf.output('dataurlnewwindow')
     })
   }
 
-  return(
+  return (
     <>
-      <Problems viewRef={viewRef}/>
-       <div className="print-button-container">
-          <button onClick={handlePrint}>Print</button>
-       </div>
-      
+    <div className="flex flex-row items-start m-5 justify-center">
+
+      <Problems viewRef={viewRef} />
+      <div className="bg-green-700 p-5 rounded-md font-bold text-white">
+        <button onClick={handlePrint}>Print</button>
+      </div>
+    </div>
+
 
     </>
   )

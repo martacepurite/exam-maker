@@ -1,10 +1,12 @@
+@import "tailwindcss";
+
+/*
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color:honeydew;
     width: fit-content;
     margin: auto;
 }
-
 .display-container {
     
     width: 80%;
@@ -14,7 +16,6 @@ body {
     min-width: 500px;
     
 }
-
 .display-container ul {
     padding-left: 20px;
 }
@@ -46,7 +47,6 @@ body {
 .problems-container input {
     margin: 5px;
 }
-
 .problem-box {
     background-color:lightsteelblue;
     border-radius: 10px;
@@ -231,6 +231,7 @@ select {
 }
 
 
+*/
 
 
 
