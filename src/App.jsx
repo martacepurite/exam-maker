@@ -6,25 +6,21 @@ import Problems from "./Problems";
 //TODO
 //regular triangle
 //circles
-// parallelogram, 
+// parallelogram,
 //3d shapes
 //test grid
 //lines, charts
 //ANGLES
 
 function App() {
-
-  const viewRef = useRef(null)
+  const viewRef = useRef(null);
 
   function handlePrint() {
+    let page = viewRef.current;
 
-    let page = viewRef.current
+    let chi = page.children;
 
-    let chi = page.children
-
-    const pdf = new jsPDF(
-      "p", "px", "a4"
-    );
+    const pdf = new jsPDF("p", "px", "a4");
 
     let scale = 2;
     let print_scale = scale * 1.5;
@@ -32,50 +28,44 @@ function App() {
     let left_margin = 40;
     let page_height = 1122;
 
+    let arr = Array.from(chi);
 
-    let arr = Array.from(chi)
-
-    const tasks = arr.map(tab => html2canvas(tab,
-      {
+    const tasks = arr.map((tab) =>
+      html2canvas(tab, {
         scale: scale,
-
-      }
-    ))
+      })
+    );
 
     let coord = top_margin;
 
-    Promise.all(tasks).then(canvases => {
+    Promise.all(tasks).then((canvases) => {
       for (const canvas of canvases) {
-        let imgData = canvas.toDataURL('image/png', 1.0);
+        let imgData = canvas.toDataURL("image/png", 1.0);
         let height = canvas.height / print_scale;
         let width = canvas.width / print_scale;
 
         if (coord + height > 500) {
-          pdf.addPage()
+          pdf.addPage();
           coord = 20;
         }
-        pdf.addImage(imgData, 'PNG', left_margin, coord, width, height);
-        coord += canvas.height / print_scale
-
+        pdf.addImage(imgData, "PNG", left_margin, coord, width, height);
+        coord += canvas.height / print_scale;
       }
 
-      pdf.output('dataurlnewwindow')
-    })
+      pdf.output("dataurlnewwindow");
+    });
   }
 
   return (
     <>
-    <div className="flex flex-row items-start m-5 justify-center">
-
-      <Problems viewRef={viewRef} />
-      <div className="bg-green-700 p-5 rounded-md font-bold text-white">
-        <button onClick={handlePrint}>Print</button>
+      <div className="flex flex-row items-start m-5 justify-center">
+        <Problems viewRef={viewRef} />
+        <div className="bg-green-700 p-5 rounded-md font-bold text-white hover:scale-110 shadow-md/40 cursor-pointer">
+          <button onClick={handlePrint}>Print</button>
+        </div>
       </div>
-    </div>
-
-
     </>
-  )
+  );
 }
 
-export default App
+export default App;
