@@ -1,14 +1,15 @@
 import { useState } from "react";
+import DeleteButton from "./DeleteButton";
 
 const shape_icons = {
   triangle: "Triangle",
   "right-triangle": "Right Triangle",
-  "isoceles-triangle": "Isoceles Triangle",
+  "isosceles-triangle": "Isosceles Triangle",
   rectangle: "Rectangle",
   square: "Square",
   rhombus: "Rhombus",
   trapezoid: "Trapezoid",
-  "isoceles-trapezoid": "Isoceles Trapezoid",
+  "isosceles-trapezoid": "Isosceles Trapezoid",
 };
 
 function ProblemForm({
@@ -27,9 +28,7 @@ function ProblemForm({
 }) {
   const [isVisible, setIsVisible] = useState(true);
   const [showButtonText, setShowButtonText] = useState("Hide");
-
   const [showAddShapeMenu, setShowAddShapeMenu] = useState(false);
-
   function handleShow() {
     if (!isVisible) {
       setShowButtonText("Hide");
@@ -43,7 +42,7 @@ function ProblemForm({
     <>
       <div
         key={problem.id}
-        className="flex flex-col bg-neutral-200 shadow-md/40 rounded-2xl p-2 mb-1 hover:brightness-105"
+        className="flex flex-col bg-neutral-200 shadow-md/40 rounded-2xl p-2 mb-1"
       >
         <label className="m-1 p-1 flex flex-row items-center">
           <p className="font-bold mr-1">Question:</p>
@@ -58,7 +57,7 @@ function ProblemForm({
           />
 
           <button
-            className="font-bold p-1 hover:scale-110 cursor-pointer text-sky-900"
+            className="font-bold p-1 hover:scale-110 cursor-pointer text-neutral-800"
             onClick={handleShow}
           >
             {showButtonText}
@@ -86,12 +85,11 @@ function ProblemForm({
                   }}
                 ></input>
                 <button
-                  className="pr-2 pl-1 text-red-800 font-bold text-2xl hover:scale-110 cursor-pointer "
                   onClick={() => {
                     handleRemoveAnswer(problem.id, answer.id);
                   }}
                 >
-                  x
+                  <DeleteButton />
                 </button>
               </div>
             ))}
@@ -108,9 +106,7 @@ function ProblemForm({
                       handleDeleteShape(problem.id, shape.id, e);
                     }}
                   >
-                    <div className=" ml-2 mb-2 text-3xl font-bold text-red-700 hover:scale-110 cursor-pointer align-bottom">
-                      x
-                    </div>
+                  <DeleteButton />
                   </button>
                 </div>
                 <form
@@ -219,6 +215,8 @@ function ProblemForm({
               Add Shape
             </button>
 
+            {/* Menu for creating new shape, visible after clicking button */}
+
             {showAddShapeMenu && (
               <div className="p-2 m-2 flex flex-row shadow-md/40 rounded-xl bg-lime-200 items-center justify-center">
                 <form
@@ -233,20 +231,33 @@ function ProblemForm({
                   >
                     <option value="triangle">Triangle</option>
                     <option value="right-triangle">Right Triangle</option>
-                    <option value="isoceles-triangle">Isoceles Triangle</option>
+                    <option value="isosceles-triangle">Isosceles Triangle</option>
                     <option value="rectangle">Rectangle</option>
                     <option value="square">Square</option>
                     <option value="rhombus">Rhombus</option>
                     <option value="trapezoid">Trapezoid</option>
-                    <option value="isoceles-trapezoid">
-                      Isoceles Trapezoid
+                    <option value="isosceles-trapezoid">
+                      Isosceles Trapezoid
                     </option>
                   </select>
                   <button
-                    className="cursor-pointer font-bold m-2 hover:scale-110 text-3xl text-center"
+                    className="cursor-pointer font-bold m-2 hover:scale-110 align-sub"
                     type="submit"
                   >
-                    +
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="size-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12 4.5v15m7.5-7.5h-15"
+                      />
+                    </svg>
                   </button>
                 </form>
               </div>

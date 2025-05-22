@@ -715,7 +715,7 @@ function Trapezoid({ sides, units, angles, letters }) {
   );
 }
 
-function IsocelesTriangle({ sides, units, angles, letters }) {
+function IsoscelesTriangle({ sides, units, angles, letters }) {
   let pts = "80,20 35,120 130,120";
 
   let has_units = units !== "";
@@ -823,7 +823,7 @@ function IsocelesTriangle({ sides, units, angles, letters }) {
   );
 }
 
-function IsocelesTrapezoid({ sides, units, angles, letters }) {
+function isoscelesTrapezoid({ sides, units, angles, letters }) {
   let has_side_one = sides[0] !== "";
   let has_side_two = sides[1] !== "";
   let has_side_three = sides[2] !== "";
@@ -975,12 +975,12 @@ function IsocelesTrapezoid({ sides, units, angles, letters }) {
 //       label_one: [0,52,"rotate(-75 18,50)"],
 //       label_two: [75,29,"rotate(37, 75,25)"]
 //   },
-//   'isoceles-triangle': {
+//   'isosceles-triangle': {
 //       poly_points: "80,20 35,120 130,120",
 //       label_one: [15,83,"rotate(-64 30,60)"],
 //       label_two: [75,29,"rotate(37, 75,25)"]
 //   },
-//   'isoceles-trapezoid': {
+//   'isosceles-trapezoid': {
 //       poly_points: "30,100 50,20 150,20 170,100",
 //       label_one: [20,80,"rotate(-73 20,70)"],
 //       label_two: [75,29,"rotate(37, 75,25)"]
@@ -1053,11 +1053,11 @@ function Shape({ type, sides, units, angles, letters }) {
     );
   }
 
-  if (type === "isoceles-triangle") {
+  if (type === "isosceles-triangle") {
     return (
       <>
         <div className="shape-holder">
-          <IsocelesTriangle
+          <IsoscelesTriangle
             sides={sides}
             units={units}
             angles={angles}
@@ -1118,11 +1118,11 @@ function Shape({ type, sides, units, angles, letters }) {
     );
   }
 
-  if (type === "isoceles-trapezoid") {
+  if (type === "isosceles-trapezoid") {
     return (
       <>
         <div className="shape-holder">
-          <IsocelesTrapezoid
+          <isoscelesTrapezoid
             sides={sides}
             units={units}
             angles={angles}

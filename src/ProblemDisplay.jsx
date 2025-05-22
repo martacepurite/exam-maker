@@ -10,17 +10,18 @@ function ProblemDisplay({ question, answers, shapes }) {
             <li key={answer.id}>{answer.text}</li>
           ))}
         </ul>
-
-        {shapes.map((shape) => (
-          <Shape
-            key={shape.id}
-            type={shape.type}
-            sides={shape.sides}
-            angles={shape.angles}
-            units={shape.units}
-            letters={shape.letters}
-          ></Shape>
-        ))}
+        <div className="flex flex-row flex-wrap">
+          {shapes.map((shape) => (
+            <Shape
+              key={shape.id}
+              type={shape.type}
+              sides={shape.sides}
+              angles={shape.angles}
+              units={shape.units}
+              letters={shape.letters}
+            ></Shape>
+          ))}
+        </div>
       </div>
     </>
   );

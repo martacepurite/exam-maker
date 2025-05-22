@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 
 import ProblemDisplay from "./ProblemDisplay";
 import ProblemForm from "./ProblemForm";
+import DeleteButton from "./DeleteButton";
 
 function Problems({ viewRef }) {
   const [problems, setProblems] = useState([
@@ -77,7 +78,6 @@ function Problems({ viewRef }) {
         return problem;
       }
     });
-
     setProblems(nextProblems);
   }
 
@@ -143,7 +143,7 @@ function Problems({ viewRef }) {
       newSides = ["", "", ""];
       newAngles = ["", ""];
       newLetters = ["", "", ""];
-    } else if (chosenShape === "isoceles-triangle") {
+    } else if (chosenShape === "isosceles-triangle") {
       newSides = ["", ""];
       newAngles = ["", ""];
       newLetters = ["", "", ""];
@@ -161,7 +161,7 @@ function Problems({ viewRef }) {
       newSides = ["", "", "", ""];
       newAngles = ["", "", "", ""];
       newLetters = ["", "", "", ""];
-    } else if (chosenShape === "isoceles-trapezoid") {
+    } else if (chosenShape === "isosceles-trapezoid") {
       newSides = ["", "", ""];
       newAngles = ["", ""];
       newLetters = ["", "", "", ""];
@@ -340,12 +340,11 @@ function Problems({ viewRef }) {
                   onChange={(e) => setTitle(e.target.value)}
                 />
                 <button
-                  className="font-bold text-red-600 text-xl pl-2 pr-1 hover:scale-110 cursor-pointer"
                   onClick={() => {
                     setHasTitle(false);
                   }}
                 >
-                  X
+                  <DeleteButton />
                 </button>
               </label>
             )}
@@ -370,12 +369,11 @@ function Problems({ viewRef }) {
                   onChange={(e) => setSubtitle(e.target.value)}
                 />
                 <button
-                  className="font-bold text-red-600 text-xl pl-2 pr-1 hover:scale-110 cursor-pointer"
                   onClick={() => {
                     setHasSubtitle(false);
                   }}
                 >
-                  X
+                  <DeleteButton />
                 </button>
               </label>
             )}
@@ -400,12 +398,11 @@ function Problems({ viewRef }) {
                   onChange={(e) => setName(e.target.value)}
                 />
                 <button
-                  className="font-bold text-red-600 text-xl pl-2 pr-1 hover:scale-110 cursor-pointer"
                   onClick={() => {
                     setHasName(false);
                   }}
                 >
-                  X
+                  <DeleteButton />
                 </button>
               </label>
             )}
@@ -431,12 +428,11 @@ function Problems({ viewRef }) {
                   onChange={(e) => setGrade(e.target.value)}
                 />
                 <button
-                  className="font-bold text-red-600 text-xl pl-2 pr-1 hover:scale-110 cursor-pointer"
                   onClick={() => {
                     setHasGrade(false);
                   }}
                 >
-                  X
+                  <DeleteButton />
                 </button>
               </label>
             )}
@@ -473,13 +469,17 @@ function Problems({ viewRef }) {
           ))}
 
           <button
-                className="bg-gray-100 p-1 pr-2 pl-2 m-1 rounded-full shadow-sm/40 cursor-pointer hover:scale-95"
-           onClick={handleAddProblem}>Add Problem</button>
+            className="bg-gray-100 p-1 pr-2 pl-2 m-1 rounded-full shadow-sm/40 cursor-pointer hover:scale-95"
+            onClick={handleAddProblem}
+          >
+            Add Problem
+          </button>
         </div>
 
-        
-
-        <div className="flex flex-col bg-white p-5 border-1 shadow-md/20 h-[1000px] w-[600px]" ref={viewRef}>
+        <div
+          className="flex flex-col bg-white p-5 border-1 shadow-md/20 h-[1000px] w-[600px]"
+          ref={viewRef}
+        >
           {(hasTitle || hasSubtitle) && (
             <div className="flex flex-col items-center justify-center p-3 m-3">
               {hasTitle && <h1>{title}</h1>}
@@ -489,8 +489,18 @@ function Problems({ viewRef }) {
 
           {(hasGrade || hasName) && (
             <div className="flex flex-row p-2 m-2">
-              {hasName && <h2>{name} ____________________________ </h2>}
-              {hasGrade && <h2>{grade}_________ </h2>}
+              {hasName && (
+                <div className="flex grow-7">
+                  <div className="flex">{name}</div>
+                  <div className="border-b flex grow-7 "></div>
+                </div>
+              )}
+              {hasGrade && (
+                <div className="flex grow-3">
+                  <div className="flex">{grade}</div>
+                  <div className="border-b flex grow-1"></div>
+                </div>
+              )}
             </div>
           )}
 

@@ -17,9 +17,7 @@ function App() {
 
   function handlePrint() {
     let page = viewRef.current;
-
     let chi = page.children;
-
     const pdf = new jsPDF("p", "px", "a4");
 
     let scale = 2;
@@ -27,7 +25,6 @@ function App() {
     let top_margin = 20;
     let left_margin = 40;
     let page_height = 1122;
-
     let arr = Array.from(chi);
 
     const tasks = arr.map((tab) =>
@@ -43,7 +40,6 @@ function App() {
         let imgData = canvas.toDataURL("image/png", 1.0);
         let height = canvas.height / print_scale;
         let width = canvas.width / print_scale;
-
         if (coord + height > 500) {
           pdf.addPage();
           coord = 20;
@@ -51,7 +47,6 @@ function App() {
         pdf.addImage(imgData, "PNG", left_margin, coord, width, height);
         coord += canvas.height / print_scale;
       }
-
       pdf.output("dataurlnewwindow");
     });
   }
@@ -60,9 +55,7 @@ function App() {
     <>
       <div className="flex flex-row items-start m-5 justify-center">
         <Problems viewRef={viewRef} />
-        <div className="bg-green-700 p-5 rounded-md font-bold text-white hover:scale-110 shadow-md/40 cursor-pointer">
-          <button onClick={handlePrint}>Print</button>
-        </div>
+          <button className="bg-green-700 p-5 rounded-md font-bold text-white hover:scale-110 shadow-md/40 cursor-pointer" onClick={handlePrint}>Print</button>
       </div>
     </>
   );
