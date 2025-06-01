@@ -1,6 +1,10 @@
 import Shape from "./Shape";
 
+// displays created questions and answers in generated exam 
+// dynamically spawns Shape components that appear in generated exam, passing shape type, side length and other params as props 
+
 function ProblemDisplay({ question, answers, shapes }) {
+
   return (
     <>
       <div className="flex flex-col gap-2 p-2 pl-10">

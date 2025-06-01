@@ -12,10 +12,15 @@ import Problems from "./Problems";
 //lines, charts
 //ANGLES
 
+
+
 function App() {
   const viewRef = useRef(null);
 
   function handlePrint() {
+
+    //uses npm libraries to transform React components to a suitable format for converting to pdf
+
     let page = viewRef.current;
     let chi = page.children;
     const pdf = new jsPDF("p", "px", "a4");
